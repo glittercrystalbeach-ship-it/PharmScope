@@ -85,12 +85,12 @@ const PrescriptionChecker = () => {
 
   if (step === 'capture') {
     return (
-      <div style={{ width: '100vw', height: '100vh', position: 'relative', margin: 0, padding: 0, overflow: 'hidden' }}>
+      <div style={{ width: '100vw', height: '100vh', position: 'fixed', top: 0, left: 0, margin: 0, padding: 0, overflow: 'hidden' }}>
         <video ref={videoRef} autoPlay playsInline style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
         <canvas ref={canvasRef} style={{ display: 'none' }} />
         
         {/* ガイドライン（黄色） */}
-        <svg style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none' }}>
+        <svg style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', pointerEvents: 'none' }}>
           {/* 上下左右の暗くした領域 */}
           <rect x="0" y="0" width="100%" height="15%" fill="rgba(0,0,0,0.4)" />
           <rect x="0" y="85%" width="100%" height="15%" fill="rgba(0,0,0,0.4)" />
@@ -110,19 +110,12 @@ const PrescriptionChecker = () => {
           />
 
           {/* 四隅の強調マーカー（黄色） */}
-          {/* 左上 */}
           <line x1="10%" y1="15%" x2="20%" y2="15%" stroke="#FFD700" strokeWidth="3" />
           <line x1="10%" y1="15%" x2="10%" y2="25%" stroke="#FFD700" strokeWidth="3" />
-          
-          {/* 右上 */}
           <line x1="90%" y1="15%" x2="80%" y2="15%" stroke="#FFD700" strokeWidth="3" />
           <line x1="90%" y1="15%" x2="90%" y2="25%" stroke="#FFD700" strokeWidth="3" />
-          
-          {/* 左下 */}
           <line x1="10%" y1="85%" x2="20%" y2="85%" stroke="#FFD700" strokeWidth="3" />
           <line x1="10%" y1="85%" x2="10%" y2="75%" stroke="#FFD700" strokeWidth="3" />
-          
-          {/* 右下 */}
           <line x1="90%" y1="85%" x2="80%" y2="85%" stroke="#FFD700" strokeWidth="3" />
           <line x1="90%" y1="85%" x2="90%" y2="75%" stroke="#FFD700" strokeWidth="3" />
 
@@ -136,7 +129,7 @@ const PrescriptionChecker = () => {
         <button 
           onClick={handleCapture}
           style={{
-            position: 'absolute',
+            position: 'fixed',
             bottom: '30px',
             left: '50%',
             transform: 'translateX(-50%)',
